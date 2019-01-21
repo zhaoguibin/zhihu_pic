@@ -17,7 +17,7 @@ import (
 	"time"
 )
 
-var quit chan int = make(chan int)
+var quit = make(chan int)
 
 func main() {
 
@@ -133,9 +133,7 @@ func downloadImg(url, imgDir string) (n int64, err error) {
 
 func pathExists(path string) (bool, error) {
 	_, err := os.Stat(path)
-	if err == nil {
-		return true, nil
-	} else {
+	if err != nil {
 		err := os.Mkdir(path, os.ModePerm)
 
 		if err != nil {
