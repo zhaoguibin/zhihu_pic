@@ -12,11 +12,9 @@ import (
 
 	"github.com/tidwall/gjson"
 
-	//"sync"
 	"bufio"
 	"strconv"
 	"time"
-	//"runtime"
 )
 
 var quit chan int = make(chan int)
@@ -94,11 +92,10 @@ func getImgURL(url, imgDir string) {
 
 		if len(next.String()) > 0 {
 			getImgURL(next.String(), imgDir)
-		}else{
+		} else {
 			fmt.Println("抓取结束，已到最后一页")
 			return
 		}
-
 
 	} else {
 		fmt.Println("获取数据错误，请重试")
